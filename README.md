@@ -1,2 +1,8 @@
-# NBA_Player_Team_Analysis
-Analysis by Player/Team for 2016-1027
+# royh21k.github.io
+Copyright @ Royce Ho
+## Description
+This will be the main portfolio page for Royce Ho. 
+I am currently located in New York City.
+Link to my blog explaining all my projects:
+https://blog.nycdatascience.com/author/royh21k/
+
