@@ -1,8 +1,7 @@
-# royh21k.github.io
-Copyright @ Royce Ho
+# bsharvey.github.io
+Taken from @ Royce Ho
 ## Description
-This will be the main portfolio page for Royce Ho. 
-I am currently located in New York City.
-Link to my blog explaining all my projects:
-https://blog.nycdatascience.com/author/royh21k/
-
+This will be the main portfolio page for Ben's Analytics.
+I am currently located in the DMV area.
+Link to my course:
+https://bsharvey.github.io
