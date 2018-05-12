@@ -2,8 +2,8 @@ from scipy.stats import spearmanr, kendalltau
 import pandas as pd
 from matplotlib import pyplot as plt
 import seaborn as sns
-# %matplotlib inline
-print (Run "%matplotlib inline" for graphs)
+#%matplotlib inline
+#print 'Run "%matplotlib inline" for graphs'
 
 p = pd.read_csv('data/nbaplayerstats.csv')
 t = pd.read_csv('data/nbateamstats.csv')
@@ -79,7 +79,7 @@ def getTeamGamelogs(team, cols = teamGameLogsColumns):
     else:
         return teamlist[team]['GAMELOGS'][cols]
 
-
+    
 playergamelogs = []
 for i in playerlist.keys():
     playergamelogs.append(getPlayerGamelogs(i))
@@ -169,11 +169,11 @@ for i in playerlist:
     d1 = d1['ARENAktcorr'].sum()
     playerWLCorr[i] = {'corrTable': a.sort_values(by='W/Lktcorr', ascending=0), 'impact': b, 'posimpact': c, 'negimpact': d}
     playerHACorr[i] = {'corrTable': a1.sort_values(by='ARENAktcorr', ascending=0), 'impact': b1, 'homeimpact': c1, 'awayimpact': d1}
-
+        
 def plotPlayerWFactors(x, size = 3):
-    print x
+    print (x)
     a = playerWLCorr[x]['corrTable'][:size]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     g = sns.PairGrid(getPlayerGamelogs(x, a).sort_values(by = 'W/L', ascending=0), hue = 'W/L', palette='Set2',\
@@ -185,9 +185,9 @@ def plotPlayerWFactors(x, size = 3):
     g.fig.suptitle(x, fontsize=20)
 
 def plotPlayerLFactors(x, size = 3):
-    print x
+    print (x)
     a = playerWLCorr[x]['corrTable'][-size:]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     g = sns.PairGrid(getPlayerGamelogs(x, a).sort_values(by = 'W/L', ascending=0), hue = 'W/L', palette='Set2',\
@@ -199,9 +199,9 @@ def plotPlayerLFactors(x, size = 3):
     g.fig.suptitle(x, fontsize=20)
 
 def plotPlayerHomeFactors(x, size = 3):
-    print x
+    print (x)
     a = playerHACorr[x]['corrTable'][:3]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('ARENA')
     g = sns.PairGrid(getPlayerGamelogs(x, a).sort_values(by = 'ARENA', ascending=0), hue = 'ARENA', palette='Set2',\
@@ -213,9 +213,9 @@ def plotPlayerHomeFactors(x, size = 3):
     g.fig.suptitle(x, fontsize=20)
 
 def plotPlayerAwayFactors(x, size = 3):
-    print x
+    print (x)
     a = playerHACorr[x]['corrTable'][-3:]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('ARENA')
     g = sns.PairGrid(getPlayerGamelogs(x, a).sort_values(by = 'ARENA', ascending=0), hue = 'ARENA', palette='Set2',\
@@ -227,9 +227,9 @@ def plotPlayerAwayFactors(x, size = 3):
     g.fig.suptitle(x, fontsize=20)
 
 def plotPlayerWFactBox(x, i = 1):
-    print x
+    print (x)
     a = playerWLCorr[x]['corrTable'][i-1:i]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     a.append('ARENA')
@@ -237,12 +237,12 @@ def plotPlayerWFactBox(x, i = 1):
     sns.boxplot(x='W/L', y=a[0], hue='ARENA', data=b, palette='PRGn')
 
 def plotPlayerLFactBox(x, i = 1):
-    print x
+    print (x)
     if i == 1:
         a = playerWLCorr[x]['corrTable'][-i:]
-    else:
+    else: 
         a = playerWLCorr[x]['corrTable'][-i:-(i-1)]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     a.append('ARENA')
@@ -292,12 +292,12 @@ for i in teamlist:
     d1 = d1['ARENAktcorr'].sum()
     teamWLCorr[i] = {'corrTable': a.sort_values(by='W/Lktcorr', ascending=0), 'impact': b, 'posimpact': c, 'negimpact': d}
     teamHACorr[i] = {'corrTable': a1.sort_values(by='ARENAktcorr', ascending=0), 'impact': b1, 'homeimpact': c1, 'awayimpact': d1}
-
+    
 def plotTeamWFactors(x, size = 3):
-    print x
-    print 'RECORD: ' + teamlist[x]['RECORD']
+    print (x) 
+    print ("RECORD:"  + teamlist[x]['RECORD'])
     a = teamWLCorr[x]['corrTable'][:size]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     g = sns.PairGrid(getTeamGamelogs(x, a).sort_values(by = 'W/L', ascending=0), hue = 'W/L', palette='Set2',\
@@ -309,10 +309,10 @@ def plotTeamWFactors(x, size = 3):
     g.fig.suptitle(x, fontsize=20)
 
 def plotTeamLFactors(x, size = 3):
-    print x
-    print 'RECORD: ' + teamlist[x]['RECORD']
+    print (x) 
+    print ("RECORD:"  + teamlist[x]['RECORD'])
     a = teamWLCorr[x]['corrTable'][-size:]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     g = sns.PairGrid(getTeamGamelogs(x, a).sort_values(by = 'W/L', ascending=0), hue = 'W/L', palette='Set2',\
@@ -324,10 +324,10 @@ def plotTeamLFactors(x, size = 3):
     g.fig.suptitle(x, fontsize=20)
 
 def plotTeamHomeFactors(x, size = 3):
-    print x
-    print 'RECORD: ' + teamlist[x]['RECORD']
+    print (x) 
+    print ("RECORD:"  + teamlist[x]['RECORD'])
     a = teamHACorr[x]['corrTable'][:3]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('ARENA')
     g = sns.PairGrid(getTeamGamelogs(x, a).sort_values(by = 'ARENA', ascending=0), hue = 'ARENA', palette='Set2',\
@@ -339,10 +339,10 @@ def plotTeamHomeFactors(x, size = 3):
     g.fig.suptitle(x, fontsize=20)
 
 def plotTeamAwayFactors(x, size = 3):
-    print x
-    print 'RECORD: ' + teamlist[x]['RECORD']
+    print (x) 
+    print ("RECORD:"  + teamlist[x]['RECORD'])
     a = teamHACorr[x]['corrTable'][-3:]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('ARENA')
     g = sns.PairGrid(getTeamGamelogs(x, a).sort_values(by = 'ARENA', ascending=0), hue = 'ARENA', palette='Set2',\
@@ -354,10 +354,10 @@ def plotTeamAwayFactors(x, size = 3):
     g.fig.suptitle(x, fontsize=20)
 
 def plotTeamWFactBox(x, i = 1):
-    print x
-    print 'RECORD: ' + teamlist[x]['RECORD']
+    print (x) 
+    print ("RECORD:"  + teamlist[x]['RECORD'])
     a = teamWLCorr[x]['corrTable'][i-1:i]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     a.append('ARENA')
@@ -365,13 +365,13 @@ def plotTeamWFactBox(x, i = 1):
     sns.boxplot(x='W/L', y=a[0], hue='ARENA', data=b, palette='PRGn')
 
 def plotTeamLFactBox(x, i = 1):
-    print x
-    print 'RECORD: ' + teamlist[x]['RECORD']
+    print (x) 
+    print ("RECORD:"  + teamlist[x]['RECORD'])
     if i == 1:
         a = teamWLCorr[x]['corrTable'][-i:]
-    else:
+    else: 
         a = teamWLCorr[x]['corrTable'][-i:-(i-1)]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     a.append('ARENA')
@@ -422,7 +422,7 @@ def teamOrderbyImpact():
     a = []
     for i in teamlist.keys():
         try:
-            a.append([i, teamWLCorr[i]['impact']])
+            a.append([i, teamWLCorr[i]['impact']]) 
         except:
             continue
     return list(pd.DataFrame(a).sort_values(by = 1, ascending = 0)[0])
@@ -461,7 +461,7 @@ def rosterOrderbyAwayImpact(team):
 
 def plotOverallPlayerWFactors(size = 3):
     a = overallPcorr('W/L')['corrTable'][:size]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     g = sns.PairGrid(playergamelogs.sort_values(by = 'W/L', ascending=0), hue = 'W/L', palette='Set2',\
@@ -474,7 +474,7 @@ def plotOverallPlayerWFactors(size = 3):
 
 def plotOverallPlayerLFactors(size = 3):
     a = overallPcorr('W/L')['corrTable'][-size:]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     g = sns.PairGrid(playergamelogs.sort_values(by = 'W/L', ascending=0), hue = 'W/L', palette='Set2',\
@@ -487,7 +487,7 @@ def plotOverallPlayerLFactors(size = 3):
 
 def plotOverallPlayerHomeFactors(size = 3):
     a = overallPcorr('ARENA')['corrTable'][:3]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('ARENA')
     g = sns.PairGrid(playergamelogs.sort_values(by = 'ARENA', ascending=0), hue = 'ARENA', palette='Set2',\
@@ -500,7 +500,7 @@ def plotOverallPlayerHomeFactors(size = 3):
 
 def plotOverallPlayerAwayFactors(size = 3):
     a = overallPcorr('ARENA')['corrTable'][-3:]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('ARENA')
     g = sns.PairGrid(playergamelogs.sort_values(by = 'ARENA', ascending=0), hue = 'ARENA', palette='Set2',\
@@ -513,7 +513,7 @@ def plotOverallPlayerAwayFactors(size = 3):
 
 def plotOverallPlayerWFactBox(i = 1):
     a = overallPcorr('W/L')['corrTable'][i-1:i]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     a.append('ARENA')
@@ -523,18 +523,18 @@ def plotOverallPlayerWFactBox(i = 1):
 def plotOverallPlayerLFactBox(i = 1):
     if i == 1:
         a = overallPcorr('W/L')['corrTable'][-i:]
-    else:
+    else: 
         a = overallPcorr('W/L')['corrTable'][-i:-(i-1)]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     a.append('ARENA')
     b = playergamelogs.sort_values(by = 'W/L', ascending=0).sort_values(by = 'ARENA', ascending=0)
     sns.boxplot(x='W/L', y=a[0], hue='ARENA', data=b, palette='PRGn')
-
+    
 def plotOverallTeamWFactors(size = 3):
     a = overallPcorr('W/L')['corrTable'][:size]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     g = sns.PairGrid(teamgamelogs.sort_values(by = 'W/L', ascending=0), hue = 'W/L', palette='Set2',\
@@ -547,7 +547,7 @@ def plotOverallTeamWFactors(size = 3):
 
 def plotOverallTeamLFactors(size = 3):
     a = overallPcorr('W/L')['corrTable'][-size:]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     g = sns.PairGrid(teamgamelogs.sort_values(by = 'W/L', ascending=0), hue = 'W/L', palette='Set2',\
@@ -560,7 +560,7 @@ def plotOverallTeamLFactors(size = 3):
 
 def plotOverallTeamHomeFactors(size = 3):
     a = overallPcorr('ARENA')['corrTable'][:3]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('ARENA')
     g = sns.PairGrid(teamgamelogs.sort_values(by = 'ARENA', ascending=0), hue = 'ARENA', palette='Set2',\
@@ -573,7 +573,7 @@ def plotOverallTeamHomeFactors(size = 3):
 
 def plotOverallTeamAwayFactors(size = 3):
     a = overallPcorr('ARENA')['corrTable'][-3:]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('ARENA')
     g = sns.PairGrid(teamgamelogs.sort_values(by = 'ARENA', ascending=0), hue = 'ARENA', palette='Set2',\
@@ -586,7 +586,7 @@ def plotOverallTeamAwayFactors(size = 3):
 
 def plotOverallTeamWFactBox(i = 1):
     a = overallPcorr('W/L')['corrTable'][i-1:i]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     a.append('ARENA')
@@ -596,9 +596,9 @@ def plotOverallTeamWFactBox(i = 1):
 def plotOverallTeamLFactBox(i = 1):
     if i == 1:
         a = overallPcorr('W/L')['corrTable'][-i:]
-    else:
+    else: 
         a = overallPcorr('W/L')['corrTable'][-i:-(i-1)]
-    print a
+    print (a)
     a = list(a['STATVAR'])
     a.append('W/L')
     a.append('ARENA')
